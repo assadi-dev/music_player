@@ -26,7 +26,7 @@ export default function RootLayout() {
 
   useSetupTrackPlayer({
     onLoad: handleTrackPlayerLoaded,
-  });
+  }); 
   return (
     <SafeAreaProvider>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
