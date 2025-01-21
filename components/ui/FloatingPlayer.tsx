@@ -4,6 +4,7 @@ import { useRouter } from "expo-router";
 import { useSongsStore } from "@/store/songs.store";
 import { Colors } from "@/constants/Colors";
 import { TrackObject } from "@/services/songsData";
+import TrackPlayer from "react-native-track-player";
 
 const FloatingPlayer = () => {
   const router = useRouter();
@@ -22,6 +23,8 @@ const FloatingPlayer = () => {
       artwork: currentSong.artwork as string,
       duration: currentSong.duration,
     };
+/*     await TrackPlayer.add([track])
+    await TrackPlayer.play() */
   };
 
   return (
@@ -36,7 +39,7 @@ const FloatingPlayer = () => {
           <Text style={styles.artist}>{currentSong?.artist ?? "??"}</Text>
         </View>
       </TouchableOpacity>
-      <View style={styles.action}> </View>
+      <TouchableOpacity onPress={playSong} style={styles.action}> </TouchableOpacity>
     </View>
   );
 };

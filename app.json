@@ -12,15 +12,18 @@
       "supportsTablet": true,
       "infoPlist": {
         "UIBackgroundModes": [
+          "audio",
           "audio"
         ]
-      }
+      },
+      "bundleIdentifier": "com.anonymous.music-player"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.anonymous.music_player"
     },
     "web": {
       "bundler": "metro",
