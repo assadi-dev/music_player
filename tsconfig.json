@@ -1,11 +1,17 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
+    "target": "ES6",
     "strict": true,
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "lib": ["dom","esnext"],
     "paths": {
       "@/*": [
         "./*"
-      ]
+      ],
+      "@/assets/*":["./assets/*"]
     }
   },
   "include": [
