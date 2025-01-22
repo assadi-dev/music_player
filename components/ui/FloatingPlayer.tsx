@@ -5,6 +5,8 @@ import { useSongsStore } from "@/store/songs.store";
 import { Colors } from "@/constants/Colors";
 import { TrackObject } from "@/services/songsData";
 import TrackPlayer from "react-native-track-player";
+import useIsPlaying from "@/hooks/useIsPlaying";
+import PlayButton from "../PlayButton";
 
 const FloatingPlayer = () => {
   const router = useRouter();
@@ -23,13 +25,14 @@ const FloatingPlayer = () => {
     await TrackPlayer.add([track])
   }
     
-  intTracks()
-    }
+    intTracks()
+  }
   },[currentSong])
 
   const handlePress = () => {
     router.navigate("/player");
   };
+  const {isPlaying} = useIsPlaying()
 
   const playSong = async () => {
 
@@ -50,7 +53,7 @@ const FloatingPlayer = () => {
           <Text style={styles.artist}>{currentSong?.artist ?? "??"}</Text>
         </View>
       </TouchableOpacity>
-      <TouchableOpacity onPress={playSong} style={styles.action}> </TouchableOpacity>
+      <PlayButton style={styles.action} />
     </View>
   );
 };
@@ -85,6 +88,8 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     height: 50,
     alignSelf: "center",
+    alignItems:"center",
+    justifyContent:"center"
   },
   title: {
     color: Colors.dark.text,

@@ -1,11 +1,21 @@
 import { useEffect, useRef } from "react";
-import TrackPlayer, { RepeatMode } from "react-native-track-player";
+import TrackPlayer, { Capability, RatingType, RepeatMode } from "react-native-track-player";
 
 const setupPlayer = async () => {
   await TrackPlayer.setupPlayer({
     maxCacheSize: 1024 * 20,
   });
-  await TrackPlayer.setVolume(0.05);
+  await TrackPlayer.updateOptions({
+		ratingType: RatingType.Heart,
+		capabilities: [
+			Capability.Play,
+			Capability.Pause,
+			Capability.SkipToNext,
+			Capability.SkipToPrevious,
+			Capability.Stop,
+		],
+	})
+  await TrackPlayer.setVolume(0.5);
   await TrackPlayer.setRepeatMode(RepeatMode.Queue);
 };
 
