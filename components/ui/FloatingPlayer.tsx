@@ -9,13 +9,10 @@ import TrackPlayer from "react-native-track-player";
 const FloatingPlayer = () => {
   const router = useRouter();
   const currentSong = useSongsStore.use.selected();
-
-  const handlePress = () => {
-    router.navigate("/player");
-  };
-
-  const playSong = async () => {
-    if (!currentSong) return;
+  React.useEffect(()=>{
+    if(currentSong){
+  
+  const intTracks = async()=>{
     const track = {
       url: currentSong.url,
       title: currentSong.title,
@@ -23,8 +20,22 @@ const FloatingPlayer = () => {
       artwork: currentSong.artwork as string,
       duration: currentSong.duration,
     };
-/*     await TrackPlayer.add([track])
-    await TrackPlayer.play() */
+    await TrackPlayer.add([track])
+  }
+    
+  intTracks()
+    }
+  },[currentSong])
+
+  const handlePress = () => {
+    router.navigate("/player");
+  };
+
+  const playSong = async () => {
+
+     const duration = await TrackPlayer.getDuration();
+     console.log(`Duration: ${duration}`);
+    await TrackPlayer.play() 
   };
 
   return (
