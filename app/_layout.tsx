@@ -13,20 +13,27 @@ import { SplashScreen } from "expo-router";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { useSetupTrackPlayer } from "@/hooks/useSetupTrackPlayer";
+import TrackPlayer from "react-native-track-player";
+import { PlaybackService } from "@/services/PlaybackServices";
+import { useLogTrackPlayerState } from "@/hooks/useLogTrackPlayerState";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
+
 export default function RootLayout() {
   const colorScheme = useColorScheme();
-
-  const handleTrackPlayerLoaded = useCallback(() => {
-    SplashScreen.hideAsync();
+  TrackPlayer.registerPlaybackService(()=>PlaybackService);
+  const handleTrackPlayerLoaded = useCallback(async() => {
+    SplashScreen.hideAsync();  
+   
   }, []);
 
   useSetupTrackPlayer({
     onLoad: handleTrackPlayerLoaded,
   }); 
+
+
   return (
     <SafeAreaProvider>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>

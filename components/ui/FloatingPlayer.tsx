@@ -15,14 +15,21 @@ const FloatingPlayer = () => {
     if(currentSong){
   
   const intTracks = async()=>{
+    console.log("@/"+currentSong.url);
+    
     const track = {
+      id:currentSong.id,
       url: currentSong.url,
       title: currentSong.title,
       artist: currentSong.artist,
       artwork: currentSong.artwork as string,
       duration: currentSong.duration,
     };
+
     await TrackPlayer.add([track])
+ 
+
+    
   }
     
     intTracks()
@@ -32,14 +39,7 @@ const FloatingPlayer = () => {
   const handlePress = () => {
     router.navigate("/player");
   };
-  const {isPlaying} = useIsPlaying()
 
-  const playSong = async () => {
-
-     const duration = await TrackPlayer.getDuration();
-     console.log(`Duration: ${duration}`);
-    await TrackPlayer.play() 
-  };
 
   return (
     <View style={styles.container}>

@@ -1,0 +1,6 @@
+
+type PlaybackAction={
+isPlaying:boolean
+
+}
+

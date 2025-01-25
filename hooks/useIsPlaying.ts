@@ -13,7 +13,7 @@ const useIsPlaying = () => {
 
         initState()
     
-    }, [])
+    }, [TrackPlayer.getState()])
     
 
 return {
