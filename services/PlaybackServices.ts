@@ -15,7 +15,7 @@ export const PlaybackService = async function() {
         console.log('Playback state: ', event.state)
     })
     TrackPlayer.addEventListener(Event.PlaybackTrackChanged,(event)=>{
-        console.log('Track changed', event.track)
+        console.log('Track changed', event.position)
     })
    
 

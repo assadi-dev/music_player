@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { useEffect } from "react";
 import { useRouter } from "expo-router";
 import { useSongsStore } from "@/store/songs.store";
@@ -7,6 +7,8 @@ import { TrackObject } from "@/services/songsData";
 import TrackPlayer from "react-native-track-player";
 import useIsPlaying from "@/hooks/useIsPlaying";
 import PlayButton from "../PlayButton";
+import * as FileSystem  from 'expo-file-system';
+import { Directory, Paths } from "expo-file-system/next";
 
 const FloatingPlayer = () => {
   const router = useRouter();
@@ -15,7 +17,10 @@ const FloatingPlayer = () => {
     if(currentSong){
   
   const intTracks = async()=>{
-    console.log("@/"+currentSong.url);
+
+  /*   const content =  new Directory(Paths.document,"assets")
+    console.log(content); */
+  console.log('curre', currentSong.url)
     
     const track = {
       id:currentSong.id,
@@ -26,7 +31,9 @@ const FloatingPlayer = () => {
       duration: currentSong.duration,
     };
 
+    await TrackPlayer.reset()
     await TrackPlayer.add([track])
+    await TrackPlayer.play()
  
 
     
@@ -47,7 +54,10 @@ const FloatingPlayer = () => {
         onPress={handlePress}
         style={{ flexDirection: "row", flex: 1 }}
       >
-        <View style={styles.artWork}></View>
+       
+        <Image style={styles.artWork} source={{
+          uri:currentSong?.artwork ?? ""
+        }}   />
         <View style={styles.songDetail}>
           <Text style={styles.title}>{currentSong?.title ?? "???"}</Text>
           <Text style={styles.artist}>{currentSong?.artist ?? "??"}</Text>

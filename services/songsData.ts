@@ -1,3 +1,9 @@
+
+import { File } from "expo-file-system/next";
+const IP = `http://10.192.5.51:8888`
+const PATH_URL = 'medias'
+const HTTP_URL = `${IP}/${PATH_URL}/`
+
 export type SongData = {
   id: number;
   songName: string;
@@ -7,6 +13,7 @@ export type SongData = {
   audioPath: string;
   duration: number;
 };
+
 
 export type TrackObject = {
   id: number;
@@ -23,8 +30,8 @@ export const songsData: TrackObject[] = [
     title: "Dynasties & Dystopia",
     artist: "Denzel Curry, Gizzle, Bren Joy",
     album: "Arcane League Of Legends",
-    url: "assets/audios/audio_1.mp3",
-    artwork: "assets/images/cover.jpg",
+    url: HTTP_URL+"assets/audios/audio_1.mp3",
+    artwork: HTTP_URL+"assets/images/cover.jpg",
     duration: 178,
   },
 
@@ -33,8 +40,8 @@ export const songsData: TrackObject[] = [
     title: "Playground (Baby Tate Remix) ",
     artist: "Bea Miller",
     album: "Arcane League Of Legends",
-    url: "assets/audios/audio_2.mp3",
-    artwork: "assets/images/cover.jpg",
+    url:  HTTP_URL+"assets/audios/audio_2.mp3" ,
+    artwork: HTTP_URL+"assets/images/cover.jpg",
     duration: 151,
   },
 
@@ -43,8 +50,8 @@ export const songsData: TrackObject[] = [
     title: "Come Play",
     artist: "Stray Kids, Young Miko, Tom Morello",
     album: "Arcane League Of Legends",
-    url: "assets/audios/audio_3.mp3",
-    artwork: "assets/images/cover.jpg",
+    url: HTTP_URL + "assets/audios/audio_3.mp3" ,
+    artwork: HTTP_URL + "assets/images/cover.jpg",
     duration: 162,
   },
 
@@ -53,8 +60,8 @@ export const songsData: TrackObject[] = [
     title: "To Ashes and Blood",
     artist: "Woodkid",
     album: "Arcane League Of Legends",
-    url: "assets/audios/audio_4.mp3",
-    artwork: "assets/images/cover.jpg",
+    url: HTTP_URL + "assets/audios/audio_4.mp3",
+    artwork: HTTP_URL + "assets/images/cover.jpg",
     duration: 246,
   },
 ];

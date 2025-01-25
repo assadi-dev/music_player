@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { TrackObject } from "@/services/songsData";
 import { setActiveQueueId } from "@/store/queue.store";
@@ -14,7 +14,9 @@ const SongsItem = ({ song }: SongsItemProps) => {
   return (
     <TouchableOpacity onPress={handlePress}>
       <View style={styles.container}>
-        <View style={styles.artWorkColumn}></View>
+           <Image style={styles.artWorkColumn} source={{
+                  uri:song?.artwork ?? ""
+             }} />
         <View>
           <Text style={styles.songTitle}>{song.title}</Text>
           <Text>{song.artist}</Text>
